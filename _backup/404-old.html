@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Page not found | Grow with Sasha</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&amp;family=Poppins:wght@400;500;600&amp;display=swap">
+<style>body{margin:0;background:#F5EFE6;color:#4A4D66;font-family:"Garet","Poppins",system-ui,sans-serif}a{color:#4A4D66}a:hover{color:#F26F8F}</style>
+</helmet>
+<main style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:40px 24px;box-sizing:border-box;text-align:center;position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:-10%;right:-10%;width:480px;height:480px;border-radius:50%;background:rgba(255,92,138,.16);filter:blur(100px)"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:-15%;left:-10%;width:420px;height:420px;border-radius:50%;background:rgba(168,85,247,.14);filter:blur(100px)"></div>
+  <a href="/" style="font-family:Oswald,sans-serif;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;position:relative">Grow<span style="color:#F26F8F">with</span>Sasha</a>
+  <div style="font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(96px,18vw,180px);line-height:.9;position:relative">404</div>
+  <h1 style="font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0;position:relative">This page doesn't exist.</h1>
+  <p style="margin:0;max-width:44ch;font-size:17px;line-height:1.6;position:relative">The link may be old or mistyped. Here's where you can go instead.</p>
+  <nav style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;position:relative">
+    <a href="/" style="background:#4A4D66;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 28px;border-radius:999px">Back to Home</a>
+    <a href="/meta-ads-consultation" style="background:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:14px 28px;border-radius:999px;border:1px solid rgba(74,77,102,.15)">Book a Consultation</a>
+  </nav>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;quoteAlign&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;center&quot;,&quot;left&quot;],&quot;default&quot;:&quot;center&quot;,&quot;tsType&quot;:&quot;'center' | 'left'&quot;,&quot;section&quot;:&quot;Quote box&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', idx: 0 };
+  slideRef = React.createRef();
+  cases = [
+    { title: "Local Contractor", metricHighlight: "238x ROAS", metricContext: "FROM $252 AD SPEND TO $60K", description: "Turned $252 in ad spend into a $60,000 closed project. After past unsuccessful campaigns that led to zero leads, we created a stronger homeowner offer, refined audience targeting, and built a system to attract high-quality leads consistently.", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-dark-olive text-white" },
+    { title: "Psychologist", metricHighlight: "897 LEADS", metricContext: "COST PER LEAD $1.40", description: "Previously relying entirely on organic traffic and referrals, we built their first paid system. We generated a steady, predictable stream of qualified leads at just $1.40 per lead with a 4.2x ROAS.", image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-olive text-brand-navy" },
+    { title: "Jewelry Store", metricHighlight: "5.17x ROAS", metricContext: "IN THE FIRST 2 MONTHS", description: "The brand had a loyal organic audience generating consistent sales. We analyzed buying behavior, launched fresh creatives and ad copy, and scaled warm traffic first—hitting an 11x ROAS on the first campaign.", image: "https://images.unsplash.com/photo-1585960622850-ed33c41d6418?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-pink text-white" },
+    { title: "Clothing Store", metricHighlight: "3.9x ROAS", metricContext: "211 SALES ($26,432 REVENUE)", description: "With the primary goal of increasing sales and brand awareness, the clothing store generated 211 sales and $26,432 in total revenue, proving the scalability of their e-commerce funnel.", image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-purple text-white" },
+    { title: "Photographer", metricHighlight: "15 BOOKINGS", metricContext: "IN 3 WEEKS ($10.32/BOOKING)", description: "The Vancouver-based photographer ran their ads through the Instagram app and wasn't getting the results they wanted. We switched to Instagram DM ads and booked 15 mini-sessions at $300 each within three weeks, achieving a low $10.32 cost per booking.", image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-light-purple text-brand-purple" },
+    { title: "Confidence Coach", metricHighlight: "3.5x - 6x ROAS", metricContext: "MONTHLY BACKEND RETURN", description: "They had a proven organic funnel but no cold traffic offer. We split-tested three low-ticket offers to find the winner. This front-end offer drove a 2x ROAS on its own, seamlessly converting cold traffic into their $1,500 main program for a massive final return of 6x.", image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-navy text-white" }
+  ];
+  testimonials = [
+    { text: "Sasha's team has been managing our ads for quite a long time and we are extremely happy with the results. They care about every $ spent on paid ads. The ROAS we get is far better than what we had before. Highly recommend!", name: "Steph", img: "https://randomuser.me/api/portraits/women/44.jpg" },
+    { text: "I've tried running Meta ads in the past by myself and I wasn't getting the return I need. Sasha came in with a completely new strategy, suggested a few offers just for the ads, her team created fabulous ad creatives and we were able to scale to $3000 with 3.6 ROAS!", name: "Rebekah", img: "https://randomuser.me/api/portraits/women/65.jpg" },
+    { text: "Sasha's ad strategies got me 400 new leads within a month (for only $1.02/lead.)", name: "Dustin M.", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { text: "You could tell Sasha knew her stuff! I know I'll be coming back to her again because she's that GOOD!", name: "Dahlia", img: "https://randomuser.me/api/portraits/women/68.jpg" },
+    { text: "I am happy to say that we’re seeing the highest values in 3 years!", name: "Laura", img: "https://randomuser.me/api/portraits/women/12.jpg" },
+    { text: "Sasha is the best! She made it so simple and I feel like I have such a good plan in place!!", name: "Nikki P.", img: "https://randomuser.me/api/portraits/women/32.jpg" }
+  ];
+  componentDidMount() {
+    this._tick = setInterval(() => {
+      if (this.state.page !== 'home' || this.paused || this.animating || document.hidden) return;
+      const p = (this.state.prog || 0) + 100 / 7000;
+      if (p >= 1) this.changeTo((this.state.idx + 1) % this.cases.length);
+      else this.setState({ prog: p });
+    }, 100);
+    this._h = () => this.readHash();
+    window.addEventListener('hashchange', this._h);
+    this.readHash();
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._h); clearInterval(this._tick); }
+  readHash() {}
+  go(p) {
+    const map = { home: 'index.dc.html', consultation: 'meta-ads-consultation.dc.html', 'management-no-graphics': 'meta-ads-management.dc.html', 'management-with-graphics': 'full-service-meta-ads.dc.html' };
+    location.href = map[p] || 'index.dc.html';
+  }
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  }
+  changeTo(i) {
+    if (this.animating || i === this.state.idx) return;
+    this.animating = true;
+    const el = this.slideRef.current;
+    const enter = () => {
+      this.setState({ idx: i, prog: 0 }, () => {
+        const e = this.slideRef.current;
+        if (this.exitAnim) { this.exitAnim.cancel(); this.exitAnim = null; }
+        if (e && e.animate) {
+          const a = e.animate([{ opacity: 0, transform: 'translateX(50px) scale(0.98)' }, { opacity: 1, transform: 'translateX(0) scale(1)' }], { duration: 400, easing: 'ease-out' });
+          a.onfinish = () => { this.animating = false; };
+        } else this.animating = false;
+      });
+    };
+    if (el && el.animate) {
+      this.exitAnim = el.animate([{ opacity: 1, transform: 'translateX(0) scale(1)' }, { opacity: 0, transform: 'translateX(-50px) scale(0.98)' }], { duration: 400, easing: 'ease-out', fill: 'forwards' });
+      this.exitAnim.onfinish = enter;
+    } else enter();
+  }
+  renderVals() {
+    const qa = this.props.quoteAlign ?? 'center';
+    const quoteAlignClass = qa === 'left' ? 'text-left' : 'text-center';
+    const quoteJustifyClass = qa === 'left' ? 'justify-start' : 'justify-center';
+    const n = this.cases.length;
+    const idx = this.state.idx;
+    const c = this.cases[idx];
+    const next = () => this.changeTo((this.state.idx + 1) % n);
+    const prev = () => this.changeTo((this.state.idx - 1 + n) % n);
+    return { quoteAlignClass, quoteJustifyClass,
+      isHome: this.state.page === 'home',
+      isConsultation: this.state.page === 'consultation',
+      isNoGraphics: this.state.page === 'management-no-graphics',
+      isWithGraphics: this.state.page === 'management-with-graphics',
+      year: new Date().getFullYear(),
+      toAbout: () => this.scrollTo('about'),
+      toCases: () => this.scrollTo('case-studies'),
+      toMethod: () => this.scrollTo('method'),
+      toServices: () => this.scrollTo('services'),
+      goHome: () => this.go('home'),
+      goConsultation: () => this.go('consultation'),
+      goNoGraphics: () => this.go('management-no-graphics'),
+      goWithGraphics: () => this.go('management-with-graphics'),
+      slideRef: this.slideRef,
+      cs: { ...c, num: String(idx + 1).padStart(2, '0'), alt: c.title + ' Meta ads case study' },
+      caseTotal: String(n).padStart(2, '0'),
+      pauseCases: () => { this.paused = true; },
+      resumeCases: () => { this.paused = false; },
+      tabs: this.cases.map((cc, i) => ({
+        go: () => this.changeTo(i),
+        num: String(i + 1).padStart(2, '0'),
+        title: cc.title,
+        label: 'Show case study: ' + cc.title,
+        w: i < idx ? '100%' : i === idx ? Math.round((this.state.prog || 0) * 1000) / 10 + '%' : '0%',
+        cls: i === idx ? 'text-brand-navy' : 'text-brand-navy/45 hover:text-brand-navy'
+      })),
+      next, prev,
+      onPointerDown: (e) => { this._sx = e.clientX; this._st = Date.now(); },
+      onPointerUp: (e) => {
+        if (this._sx == null) return;
+        const dx = e.clientX - this._sx;
+        const v = Math.abs(dx) / Math.max(1, Date.now() - this._st) * 1000;
+        this._sx = null;
+        if (Math.abs(dx) * v > 10000 || Math.abs(dx) > 80) { dx < 0 ? next() : prev(); }
+      },
+      dots: this.cases.map((_, i) => ({
+        go: () => this.changeTo(i),
+        cls: i === idx ? 'w-10 h-3 bg-brand-pink' : 'w-3 h-3 bg-brand-navy/20 hover:bg-brand-navy/40',
+        label: 'Go to slide ' + (i + 1)
+      })),
+      testimonials: this.testimonials.map(t => ({ ...t, alt: t.name + ', Grow with Sasha client' })),
+      consultWho: ["Business owners running their own ads", "Brands launching Meta ads for the first time", "Advertisers looking to improve performance", "Teams that need help with strategy, creative angles, or targeting", "Anyone who wants expert feedback before making expensive mistakes"],
+      consultCover: ["Campaign structure and setup", "Targeting and audience strategy", "Creative concepts and ad angles", "Ad copy and messaging", "Landing pages and conversion flow", "Troubleshooting campaigns"],
+      mgmtWho: ["E-commerce brands", "Coaches & consultants", "Service-based businesses", "Local businesses & contractors", "Health, wellness & beauty clinics", "Real estate professionals"],
+      noGfxIncluded: ["Account audit", "Meta Pixel & CAPI setup", "Campaign strategy & creation", "Audience targeting", "Daily monitoring & scaling", "Creative strategy feedback", "Monthly performance reports", "Monthly 1:1 strategy calls", "Private Slack support"],
+      gfxIncluded: ["Complete account audit", "Meta Pixel & CAPI setup", "Campaign strategy & creation", "Audience targeting", "Creative strategy & planning", "Static design & video editing", "Creative testing & iteration", "Daily optimization & scaling", "Monthly performance reports", "Monthly 1:1 strategy calls", "Private Slack support"]
+    };
+  }
+}
+</script>
+</body>
+</html><script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Meta Ads Strategist &amp; Facebook Ads Consultant | Grow with Sasha</title>
+<meta name="description" content="Meta and Facebook ads strategy, ads management and 1:1 consultations for coaches, experts and small businesses in the US. 4.4x average ROAS across 30+ ad accounts.">
+<link rel="canonical" href="https://www.growwithsasha.com/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grow with Sasha">
+<meta property="og:title" content="Meta Ads Strategist &amp; Facebook Ads Consultant | Grow with Sasha">
+<meta property="og:description" content="Meta and Facebook ads strategy, ads management and 1:1 consultations for coaches, experts and small businesses in the US. 4.4x average ROAS across 30+ ad accounts.">
+<meta property="og:url" content="https://www.growwithsasha.com/">
+<meta property="og:image" content="https://www.growwithsasha.com/assets/sasha-hero-1400.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meta Ads Strategist &amp; Facebook Ads Consultant | Grow with Sasha">
+<meta name="twitter:description" content="Meta and Facebook ads strategy, ads management and 1:1 consultations for coaches, experts and small businesses in the US. 4.4x average ROAS across 30+ ad accounts.">
+<meta name="twitter:image" content="https://www.growwithsasha.com/assets/sasha-hero-1400.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://www.growwithsasha.com/#business","name":"Grow with Sasha","url":"https://www.growwithsasha.com/","image":"https://www.growwithsasha.com/assets/sasha-hero-1400.jpg","email":"youradsguru@gmail.com","description":"Meta and Facebook ads strategy, management and consultations.","areaServed":{"@type":"Country","name":"United States"},"priceRange":"$90–$2,000+","founder":{"@type":"Person","name":"Sasha Vitiuk","jobTitle":"Meta Ads Strategist","sameAs":["https://www.instagram.com/grow.withsasha/"]},"sameAs":["https://www.instagram.com/grow.withsasha/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":5,"reviewCount":6,"bestRating":5},"review":[{"@type":"Review","author":{"@type":"Person","name":"Steph"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"Sasha's team has been managing our ads for quite a long time and we are extremely happy with the results."},{"@type":"Review","author":{"@type":"Person","name":"Rebekah"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"Sasha came in with a completely new strategy, suggested a few offers just for the ads, her team created fabulous ad creatives and we were able to scale to $3000 with 3.6 ROAS!"},{"@type":"Review","author":{"@type":"Person","name":"Dustin M."},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"Sasha's ad strategies got me 400 new leads within a month (for only $1.02/lead.)"},{"@type":"Review","author":{"@type":"Person","name":"Dahlia"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"You could tell Sasha knew her stuff!"},{"@type":"Review","author":{"@type":"Person","name":"Laura"},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"I am happy to say that we’re seeing the highest values in 3 years!"},{"@type":"Review","author":{"@type":"Person","name":"Nikki P."},"reviewRating":{"@type":"Rating","ratingValue":5,"bestRating":5},"reviewBody":"Sasha is the best! She made it so simple and I feel like I have such a good plan in place!!"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Meta ads services","itemListElement":[{"@type":"Offer","price":"90","priceCurrency":"USD","url":"https://www.growwithsasha.com/meta-ads-consultation","itemOffered":{"@type":"Service","name":"1:1 Meta Ads Consultation"}},{"@type":"Offer","price":"1000","priceCurrency":"USD","url":"https://www.growwithsasha.com/meta-ads-management","itemOffered":{"@type":"Service","name":"Meta Ads Management"}},{"@type":"Offer","price":"2000","priceCurrency":"USD","url":"https://www.growwithsasha.com/full-service-meta-ads","itemOffered":{"@type":"Service","name":"Full-Service Meta Ads Management"}}]}},{"@type":"WebSite","name":"Grow with Sasha","url":"https://www.growwithsasha.com/"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F5EFE6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&amp;display=swap">
+<style type="text/tailwindcss">
+@theme {
+  --color-brand-charcoal: #4A4D66;
+  --color-brand-silver: #D4EBFF;
+  --color-brand-sage: #C4F2DF;
+  --color-brand-blush: #FF5C8A;
+  --color-brand-champagne: #F5EFE6;
+  --color-brand-rose: #FF94B0;
+  --color-brand-teal: #00E0C6;
+  --color-brand-light-green: #C4F2DF;
+  --color-brand-olive: #C4F2DF;
+  --color-brand-dark-olive: #00E0C6;
+  --color-brand-cream: #F5EFE6;
+  --color-brand-light-pink: #FF94B0;
+  --color-brand-pink: #FF5C8A;
+  --color-brand-light-yellow: #FFF0B3;
+  --color-brand-yellow: #4A4D66;
+  --color-brand-light-purple: #EBDCFF;
+  --color-brand-purple: #A855F7;
+  --color-brand-peach: #FFDCC7;
+  --color-brand-navy: #4A4D66;
+  --color-brand-dark: #4A4D66;
+  --font-heading: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --shadow-sm: 0 1px 3px rgb(74 77 102 / 0.06);
+  --shadow-md: 0 6px 16px -6px rgb(74 77 102 / 0.12);
+  --shadow-lg: 0 14px 30px -12px rgb(74 77 102 / 0.18);
+  --shadow-xl: 0 24px 48px -20px rgb(74 77 102 / 0.18), 0 2px 6px rgb(74 77 102 / 0.04);
+  --shadow-2xl: 0 40px 80px -30px rgb(74 77 102 / 0.25), 0 2px 8px rgb(74 77 102 / 0.05);
+  --font-body: "Garet", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Garet", "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+@layer base {
+  body {
+    @apply font-body text-brand-navy bg-brand-cream antialiased selection:bg-brand-pink/35 selection:text-brand-pink;
+    font-family: "Garet", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  p, li { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid #F26F8F; outline-offset: 3px; border-radius: 9999px; }
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .035; background-image: url("https://grainy-gradients.vercel.app/noise.svg"); }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+    letter-spacing: -0.015em; text-wrap: balance;
+  }
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>body{margin:0;background:#F5EFE6;color:#4A4D66;font-family:"Garet","Poppins",ui-sans-serif,system-ui,sans-serif}</style>
+</helmet>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main class="min-h-screen selection:bg-brand-light-green selection:text-brand-navy overflow-x-hidden" data-screen-label="Home">
+  <nav class="absolute top-0 left-0 right-0 z-50 px-6 py-5 md:py-6 md:px-12 flex justify-between items-center">
+    <div class="text-xl font-heading font-semibold uppercase tracking-wide text-brand-navy">Grow<span class="text-brand-pink">with</span>Sasha</div>
+    <a href="#services" class="md:hidden inline-flex items-center justify-center rounded-full bg-brand-navy text-white text-sm font-semibold px-5 py-2.5 shadow-lg shadow-brand-navy/30 active:scale-[0.98] transition-all duration-300">Services</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#about" class="hover:text-brand-purple transition-colors duration-200 cursor-pointer">About</a>
+      <a href="#case-studies" class="hover:text-brand-purple transition-colors duration-200 cursor-pointer">Case Studies</a>
+      <a href="#method" class="hover:text-brand-purple transition-colors duration-200 cursor-pointer">Our Approach</a>
+      <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] bg-brand-navy text-white shadow-lg shadow-brand-navy/30 hover:shadow-brand-navy/50 hover:bg-opacity-90 !py-2.5 !px-6">Services</a>
+    </div>
+  </nav>
+
+  <section class="relative pt-24 pb-12 md:pt-32 md:pb-16 px-6 md:px-12 w-full flex flex-col items-center justify-center overflow-hidden bg-brand-cream">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
+      <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-brand-pink/15 md:bg-brand-pink/35 rounded-full blur-[100px] animate-pulse" style="animation-duration: 8s"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-purple/35 rounded-full blur-[100px]"></div>
+      <div class="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-brand-light-green/30 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-10 w-full relative z-10">
+      <div class="flex-1 space-y-8">
+        <p class="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-brand-navy/70">Meta &amp; Facebook Ads Strategist</p>
+        <h1 class="text-5xl sm:text-6xl md:text-[7rem] leading-[0.9] font-heading tracking-tighter">
+          Let's Make Your <br>
+          <span class="text-brand-pink relative isolate inline-block whitespace-nowrap mt-2">Ads Work.<span aria-hidden="true" class="absolute left-[4%] right-0 -bottom-[0.1em] h-[2px] rounded-full bg-gradient-to-r from-transparent via-brand-pink/50 to-brand-pink"></span></span>
+        </h1>
+        <p class="text-lg md:text-2xl text-brand-navy/70 max-w-lg font-medium leading-relaxed">I help online businesses and experts scale their offers and sales with high-converting ad strategy and creatives.</p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+          <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] bg-brand-navy text-white shadow-lg shadow-brand-navy/30 hover:shadow-brand-navy/50 hover:bg-opacity-90 text-base md:text-lg px-8 py-4 md:px-10 md:py-5">Work With Me <svg class="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <a href="#case-studies" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] bg-white border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white hover:shadow-lg hover:shadow-brand-navy/20 text-base md:text-lg px-8 py-4 md:px-10 md:py-5 bg-white/50 backdrop-blur-sm">View Results</a>
+        </div>
+      </div>
+      <div class="flex-1 relative w-full max-w-lg mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-tr from-brand-pink to-brand-peach rounded-[3rem] transform -rotate-6 scale-105 opacity-30 blur-xl"></div>
+        <div class="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-[8px] border-white/60 shadow-2xl backdrop-blur-sm transform rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
+          <img src="assets/sasha-hero-1400.jpg" alt="Sasha Vitiuk, Meta and Facebook ads strategist" width="933" height="1400" fetchpriority="high" class="w-full h-full object-cover object-top" referrerpolicy="no-referrer">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-20 px-4 md:px-12 max-w-6xl mx-auto -mt-8 md:-mt-12">
+    <div class="bg-white/70 backdrop-blur-2xl border border-white rounded-[2rem] md:rounded-[3rem] px-2 py-5 md:p-12 shadow-2xl">
+      <div class="grid grid-cols-4 gap-0 md:gap-12 divide-x divide-brand-navy/10">
+        <div class="flex flex-col items-center justify-center text-center px-2 md:px-4"><span class="text-2xl md:text-5xl font-heading font-semibold tabular-nums text-brand-navy mb-1 md:mb-2">300+</span><span class="text-xs font-semibold text-brand-navy/60 uppercase tracking-[0.08em] md:tracking-[0.18em] leading-tight text-[9px] md:text-xs">Consultations</span></div>
+        <div class="flex flex-col items-center justify-center text-center px-2 md:px-4"><span class="text-2xl md:text-5xl font-heading font-semibold tabular-nums text-brand-navy mb-1 md:mb-2">30+</span><span class="text-xs font-semibold text-brand-purple uppercase tracking-[0.08em] md:tracking-[0.18em] leading-tight text-[9px] md:text-xs">Ad Accounts</span></div>
+        <div class="flex flex-col items-center justify-center text-center px-2 md:px-4"><span class="text-2xl md:text-5xl font-heading font-semibold tabular-nums text-brand-navy mb-1 md:mb-2">$30k</span><span class="text-xs font-semibold text-brand-navy/60 uppercase tracking-[0.08em] md:tracking-[0.18em] leading-tight text-[9px] md:text-xs">Monthly</span></div>
+        <div class="flex flex-col items-center justify-center text-center px-2 md:px-4"><span class="text-2xl md:text-5xl font-heading font-semibold tabular-nums text-brand-navy mb-1 md:mb-2">4.4x</span><span class="text-xs font-semibold text-brand-navy/60 uppercase tracking-[0.08em] md:tracking-[0.18em] leading-tight text-[9px] md:text-xs">Average ROAS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-12 md:py-16 px-6 md:px-12 relative overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-[10%] right-[10%] w-[350px] h-[350px] bg-brand-peach/80 rounded-[30%_70%_70%_30%] blur-3xl"></div>
+      <div class="absolute bottom-[10%] left-[-5%] w-[300px] h-[300px] bg-brand-pink/35 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading leading-tight text-brand-navy max-w-4xl mx-auto">
+          You don't need to spend more on ads. <br class="hidden md:block">
+          <span class="text-brand-pink relative isolate inline-block mt-2">You need a strategy that converts.<span aria-hidden="true" class="absolute left-[4%] right-0 -bottom-[0.1em] h-[2px] rounded-full bg-gradient-to-r from-transparent via-brand-pink/50 to-brand-pink"></span></span>
+        </h2>
+      </div>
+      <div class="text-center max-w-4xl mx-auto mb-16 md:mb-24 space-y-6 text-brand-navy/80 font-medium leading-relaxed text-lg md:text-xl px-4 md:px-0">
+        <p class="font-bold text-brand-navy text-xl md:text-2xl">I see this all the time.</p>
+        <p class="max-w-3xl mx-auto font-bold text-brand-navy">Brands spend more money on ads before they've proven their offer, launch campaigns without knowing what converts and expect ads to magically fix a business that's not working organically.</p>
+        <div class="relative isolate overflow-hidden max-w-3xl mx-auto mt-10 rounded-[2rem] bg-white/70 backdrop-blur-xl border border-white px-8 py-10 md:px-14 md:py-12 shadow-xl {{ quoteAlignClass }}">
+          <div aria-hidden="true" class="absolute -top-20 -right-16 w-64 h-64 rounded-full bg-brand-pink/35 blur-3xl -z-10"></div>
+          <div aria-hidden="true" class="absolute -bottom-24 -left-16 w-56 h-56 rounded-full bg-brand-purple/35 blur-3xl -z-10"></div>
+          <div class="flex items-start gap-5 md:gap-8 {{ quoteJustifyClass }}">
+            <p class="font-heading font-semibold text-brand-navy text-[28px] md:text-5xl leading-[1.08] tracking-[-0.01em]">Ads are a scaling tool. They amplify what's already there—<span class="text-brand-pink">good or bad.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div class="w-full md:w-2/5 lg:w-1/3 relative flex-shrink-0">
+          <div aria-hidden="true" class="absolute inset-0 rounded-[3rem] rotate-[5deg] translate-x-3 translate-y-2 md:translate-x-6 md:translate-y-4 bg-[url('assets/texture-pink.jpg')] bg-cover bg-center shadow-xl shadow-brand-pink/30"></div>
+          <div class="relative aspect-[3/4] p-4 bg-white/60 backdrop-blur-md border border-white rounded-[3rem] shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+            <img src="assets/sasha-about-1400.jpg" alt="Sasha Vitiuk reviewing Meta ads performance at her desk" width="933" height="1400" loading="lazy" decoding="async" class="w-full h-full object-cover object-[50%_30%] rounded-[2.5rem]" referrerpolicy="no-referrer">
+          </div>
+        </div>
+        <div class="w-full md:w-3/5 lg:w-2/3 space-y-8">
+          <div class="space-y-6 text-brand-navy/70 font-medium leading-relaxed text-lg">
+            <p>Hi, I'm Sasha. I've spent 7+ years running paid ads across agencies, in-house marketing teams, and for my own clients. I've seen the same mistakes over and over:</p>
+            <ul class="space-y-4 pl-6 border-l-4 border-brand-pink/30 my-6 py-2 text-brand-navy font-semibold">
+              <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-pink"></span> Running generic strategies that don't fit the brand.</li>
+              <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-pink"></span> Wasting ad spend on creatives that don’t convert.</li>
+              <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-brand-pink"></span> Making ad decisions based on guesses instead of data.</li>
+            </ul>
+            <p>I got tired of watching that happen and built a different approach that connects strategy, creatives, data and your goals. Together we look at the whole picture: what's worth scaling, what needs work and how to turn the attention you have into predictable revenue.</p>
+            <p class="italic font-bold text-brand-navy">And if I don't think you're ready for ads yet, I'll tell you that upfront.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="pt-2 pb-12 md:py-16 px-6 md:px-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10"></div>
+    <div class="absolute top-[30%] left-[5%] w-[600px] h-[600px] bg-brand-pink/15 md:bg-brand-pink/35 rounded-full blur-[120px] mix-blend-screen -z-10 animate-pulse"></div>
+    <div class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-brand-purple/35 rounded-[60%_40%_50%_50%] blur-[100px] mix-blend-screen -z-10"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-heading text-brand-navy tracking-tight text-center">Here’s how we <br class="md:hidden"> approach ads:</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="flex flex-col p-10 min-h-[320px] bg-white/60 rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-brand-pink/70">01</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Full-funnel thinking</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">Before scaling your ads, I look at your landing page, messaging, positioning, and conversion flow. We fix what's not working before increasing spend.</p>
+        </div>
+        <div class="flex flex-col p-10 min-h-[320px] bg-brand-light-green rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-white">02</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Deep audience empathy</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">Ads convert when they resonate. We nail your audience's desires and pains, turning them into creatives that feel like “this is exactly for me.”</p>
+        </div>
+        <div class="flex flex-col p-10 min-h-[320px] bg-[#FFD6E2] rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-brand-pink/70">03</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Decisions guided by data</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">Opinions don't matter, data does. I look at what resonates, double down on what works, and ruthlessly cut what doesn’t.</p>
+        </div>
+        <div class="flex flex-col p-10 min-h-[320px] bg-brand-peach rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-white">04</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Consistent testing</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">The brands that win keep testing. I explore new angles, creative directions, and use AI tools to ensure your ads stand out.</p>
+        </div>
+        <div class="flex flex-col p-10 min-h-[320px] bg-brand-light-purple rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-brand-purple/70">05</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Clear transparency</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">You’ll see what’s working and what’s not without having to chase answers. We make decisions together as things evolve.</p>
+        </div>
+        <div class="flex flex-col p-10 min-h-[320px] bg-white rounded-[3rem] border border-white/40 backdrop-blur-md shadow-2xl hover:-translate-y-2 transition-all duration-500">
+          <div class="text-5xl mb-6 font-heading font-black text-brand-charcoal/30">06</div>
+          <h3 class="text-2xl md:text-3xl text-brand-navy mb-4 font-heading leading-tight">Real investment in results</h3>
+          <p class="text-brand-navy opacity-80 font-medium text-lg leading-relaxed flex-grow">I’m here to help your business grow. That means starting with a clear direction, refining creatives and continuously optimizing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-12 md:py-16 px-6 md:px-12 relative overflow-hidden bg-brand-cream">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-[20%] left-[30%] w-[500px] h-[500px] bg-brand-light-green/30 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-brand-pink/15 md:bg-brand-pink/35 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-4 px-4">
+        <h2 class="text-5xl md:text-6xl font-heading text-brand-navy tracking-tight text-center">Ways We Can Work Together</h2>
+        <p class="text-base md:text-xl text-brand-navy/60 font-medium">Depending on your stage of growth and needs, I offer 3 services:</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="group rounded-[3rem] border-2 border-brand-light-green/40 p-10 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col h-full bg-white/60 backdrop-blur-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-64 h-64 bg-gradient-to-br from-brand-light-green to-brand-olive rounded-full blur-3xl transition-transform group-hover:scale-150 duration-700 opacity-80"></div>
+          <div class="mb-10 relative z-10">
+            <span class="inline-block bg-white text-brand-dark-olive text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-8 shadow-sm border border-brand-light-green/40">01 / Consulting</span>
+            <h3 class="text-4xl mb-4 font-heading text-brand-navy">1:1 Meta Ads Consultation</h3>
+            <p class="text-brand-navy/70 text-lg font-medium leading-relaxed">Strategy sessions with Sasha where we dive into your Meta ads, creatives, funnel or literally anything paid ads related.</p>
+          </div>
+          <div class="mt-auto pt-8 relative z-10 flex flex-col gap-2">
+            <a href="meta-ads-consultation.dc.html" class="inline-flex items-center justify-center px-8 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] w-full text-lg py-5 bg-white border-2 border-brand-light-green text-brand-navy hover:bg-brand-light-green hover:border-brand-light-green hover:text-brand-navy shadow-sm">Learn More <svg class="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <span aria-hidden="true" class="hidden lg:block invisible text-center text-xs font-bold py-1">or Join Waitlist directly →</span>
+          </div>
+        </div>
+        <div class="group rounded-[3rem] border-2 border-brand-purple/20 p-10 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col h-full bg-brand-light-purple/30 backdrop-blur-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-64 h-64 bg-gradient-to-br from-brand-light-purple to-brand-purple rounded-full blur-3xl transition-transform group-hover:scale-150 duration-700 opacity-40"></div>
+          <div class="mb-10 relative z-10">
+            <span class="inline-block bg-white text-brand-purple text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-8 shadow-sm border border-brand-purple/20">02 / Done For You</span>
+            <h3 class="text-4xl mb-4 font-heading text-brand-navy">Meta Ads Management <br><span class="text-xl font-medium text-brand-purple mt-2 block">You provide creatives</span></h3>
+            <p class="text-brand-navy/70 text-lg font-medium leading-relaxed">We manage the technical side of your Meta ads so your campaigns have the best chance to perform while you stay focused on running your business.</p>
+          </div>
+          <div class="mt-auto pt-8 relative z-10 flex flex-col gap-2">
+            <a href="meta-ads-management.dc.html" class="inline-flex items-center justify-center px-8 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] w-full text-lg py-5 bg-white border-2 border-brand-purple text-brand-navy hover:bg-brand-purple hover:border-brand-purple hover:text-white shadow-sm">Learn More <svg class="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a href="https://tally.so/r/2E9qjD" target="_blank" rel="noopener noreferrer" class="text-center text-xs font-bold text-brand-purple hover:underline py-1">or Join Waitlist directly →</a>
+          </div>
+        </div>
+        <div class="group rounded-[3rem] border-2 border-brand-pink/20 p-10 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col h-full bg-white/60 backdrop-blur-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-64 h-64 bg-gradient-to-br from-brand-light-pink to-brand-pink rounded-full blur-3xl transition-transform group-hover:scale-150 duration-700 opacity-60"></div>
+          <div class="mb-10 relative z-10">
+            <span class="inline-block bg-white text-brand-pink text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-8 shadow-sm border border-brand-pink/20">03 / Full Service</span>
+            <h3 class="text-4xl mb-4 font-heading text-brand-navy">Full Meta Ads Management <br><span class="text-xl font-medium text-brand-pink mt-2 block">With ad creatives</span></h3>
+            <p class="text-brand-navy/70 text-lg font-medium leading-relaxed">Everything is managed end-to-end (including ad creatives and ad copy) by our team.</p>
+          </div>
+          <div class="mt-auto pt-8 relative z-10 flex flex-col gap-2">
+            <a href="full-service-meta-ads.dc.html" class="inline-flex items-center justify-center px-8 text-sm font-semibold tracking-wide transition-all duration-300 ease-out rounded-full hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] w-full text-lg py-5 bg-white border-2 border-brand-pink text-brand-navy hover:bg-brand-navy hover:border-brand-navy hover:text-white shadow-sm">Learn More <svg class="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+            <a href="https://tally.so/r/2E9qjD" target="_blank" rel="noopener noreferrer" class="text-center text-xs font-bold text-brand-pink hover:underline py-1">or Join Waitlist directly →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-studies" class="py-12 md:py-16 px-6 md:px-12 relative overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-[-5%] right-[10%] w-[500px] h-[500px] bg-brand-peach/40 rounded-[50%_50%_30%_70%] blur-[120px]"></div>
+      <div class="absolute bottom-[20%] left-[-10%] w-[400px] h-[400px] bg-brand-purple/35 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-6">
+        <h2 class="text-5xl md:text-6xl font-heading text-brand-navy tracking-tight text-center">Meta Ads Case Studies</h2>
+        <p class="text-xl text-brand-navy/60 font-medium">Scroll through a few examples of what success could look like for your business.</p>
+      </div>
+      <div class="w-full relative max-w-6xl mx-auto z-10" onMouseEnter="{{ pauseCases }}" onMouseLeave="{{ resumeCases }}">
+        <div class="relative rounded-[2rem] md:rounded-[3rem] bg-white shadow-2xl overflow-hidden">
+          <div ref="{{ slideRef }}" onPointerDown="{{ onPointerDown }}" onPointerUp="{{ onPointerUp }}" class="grid md:grid-cols-[1.15fr_0.85fr] select-none cursor-grab active:cursor-grabbing">
+            <div class="flex flex-col gap-5 md:gap-10 p-6 md:p-14">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-sm font-semibold tabular-nums text-brand-navy">{{ cs.num }} <span class="text-brand-navy/35">/ {{ caseTotal }}</span></span>
+                <div class="flex items-center gap-2">
+                  <button onClick="{{ prev }}" aria-label="Previous case study" class="w-11 h-11 rounded-full border border-brand-navy/15 text-brand-navy flex items-center justify-center transition-all duration-200 hover:bg-brand-navy hover:text-white hover:border-brand-navy active:scale-[0.96]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></button>
+                  <button onClick="{{ next }}" aria-label="Next case study" class="w-11 h-11 rounded-full border border-brand-navy/15 text-brand-navy flex items-center justify-center transition-all duration-200 hover:bg-brand-navy hover:text-white hover:border-brand-navy active:scale-[0.96]"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></button>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-brand-navy text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-[-0.02em]">{{ cs.metricHighlight }}</h3>
+                <div class="mt-3 md:mt-5 flex items-center gap-3">
+                  <span class="h-[2px] w-8 shrink-0 rounded-full bg-brand-pink"></span>
+                  <span class="text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-brand-navy/70">{{ cs.metricContext }}</span>
+                </div>
+              </div>
+              <p class="md:mt-auto text-[15px] md:text-lg text-brand-navy/75 leading-relaxed max-w-[48ch] line-clamp-4 md:line-clamp-none">{{ cs.description }}</p>
+            </div>
+            <div class="relative h-[180px] md:h-auto md:min-h-[560px] bg-brand-silver">
+              <img src="{{ cs.image }}" alt="{{ cs.alt }}" loading="lazy" decoding="async" draggable="false" class="absolute inset-0 w-full h-full object-cover" referrerpolicy="no-referrer">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/45 via-transparent to-transparent"></div>
+              <span class="absolute left-5 bottom-5 md:left-6 md:bottom-6 rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-sm font-semibold text-brand-navy shadow-lg">{{ cs.title }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 -mx-6 px-6 md:mx-0 md:px-0 flex md:grid md:grid-cols-6 gap-4 overflow-x-auto md:overflow-visible no-scrollbar">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+            <button onClick="{{ t.go }}" aria-label="{{ t.label }}" class="shrink-0 w-[150px] md:w-auto flex flex-col gap-3 pt-2 pb-1 text-left">
+              <span class="relative block h-[3px] w-full rounded-full bg-brand-navy/10 overflow-hidden"><span class="absolute inset-y-0 left-0 rounded-full bg-brand-pink" style="width: {{ t.w }}"></span></span>
+              <span class="flex items-baseline gap-2"><span class="text-xs font-semibold tabular-nums text-brand-navy/40">{{ t.num }}</span><span class="text-sm font-semibold transition-colors duration-200 {{ t.cls }}">{{ t.title }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 px-6 bg-brand-cream relative overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-brand-pink/15 md:bg-brand-pink/35 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-brand-olive/30 rounded-full blur-[100px]"></div>
+      <div class="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
+    </div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-heading text-brand-navy tracking-tight text-center mb-4 md:mb-6 px-4">Don't Just Take My Word For It</h2>
+        <p class="text-brand-navy/60 font-medium text-lg md:text-xl max-w-2xl mx-auto px-4">Real messages from real clients who worked with us and scaled their businesses.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="6">
+          <div class="flex flex-col items-start p-6 md:p-10 transition-all duration-500 hover:-translate-y-2 h-full rounded-[2rem] md:rounded-[2.5rem] border-2 backdrop-blur-xl shadow-xl hover:shadow-2xl bg-white border-white">
+            <div class="flex items-center gap-4 mb-6 w-full">
+              <img src="{{ t.img }}" alt="{{ t.alt }}" loading="lazy" decoding="async" width="48" height="48" class="w-12 h-12 rounded-full shadow-md object-cover border-2 border-white">
+              <div class="flex flex-col text-left">
+                <span class="text-base text-brand-navy font-bold">{{ t.name }}</span>
+                <div class="flex text-brand-pink mt-0.5">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+              </div>
+            </div>
+            <div class="text-left text-brand-navy font-serif italic text-xl md:text-2xl leading-snug">“{{ t.text }}”</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-20 relative overflow-hidden px-6 md:px-12 text-center flex flex-col items-center justify-center">
+    <div class="absolute inset-0 bg-brand-cream -z-20 pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay -z-10"></div>
+    <div class="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-brand-peach/40 rounded-[70%_30%_50%_50%] blur-[120px] -z-10 animate-pulse" style="animation-duration: 7s"></div>
+    <div class="absolute top-[-10%] right-[10%] w-[400px] h-[400px] bg-brand-purple/35 rounded-full blur-[100px] -z-10"></div>
+    <div class="absolute bottom-[0%] right-[30%] w-[600px] h-[600px] bg-brand-light-green/30 rounded-[40%_60%_70%_30%] blur-[120px] -z-10"></div>
+    <div class="max-w-6xl mx-auto space-y-6 md:space-y-8 relative z-10 bg-white/40 p-6 sm:p-10 md:p-20 rounded-[2rem] md:rounded-[3rem] border border-white/60 backdrop-blur-xl shadow-2xl">
+      <h2 class="text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-tight font-heading text-brand-navy tracking-tight">
+        You’re already making sales organically. <br>
+        <span class="text-brand-pink relative inline-block mt-2 md:mt-3">Now imagine your dream clients seeing your offers every single day.</span>
+      </h2>
+      <p class="text-sm sm:text-base md:text-xl font-medium text-brand-navy/70 max-w-3xl mx-auto leading-relaxed">Ads amplify your momentum and expand it, putting your business in front of people who are ready to buy.</p>
+    </div>
+  </section>
+
+  <footer class="py-14 md:py-16 px-6 md:px-12 relative z-20 bg-[#141418] bg-[linear-gradient(rgba(20,20,26,.62),rgba(20,20,26,.78)),url('assets/texture-croc.jpg')] bg-cover bg-center">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-xl font-heading font-bold text-white">Grow<span class="text-brand-pink">with</span>Sasha</div>
+      <div class="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+        <a href="https://www.instagram.com/grow.withsasha/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/80 hover:text-brand-pink hover:-translate-y-0.5 transition-all duration-300 font-medium text-sm"><svg class="w-5 h-5 text-brand-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg><span>@grow.withsasha</span></a>
+        <a href="mailto:youradsguru@gmail.com" class="inline-flex items-center gap-2 text-white/80 hover:text-brand-light-purple hover:-translate-y-0.5 transition-all duration-300 font-medium text-sm"><svg class="w-5 h-5 text-brand-light-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>youradsguru@gmail.com</span></a>
+      </div>
+      <div class="text-sm text-white/60 font-medium text-center">© {{ year }} GrowwithSasha. All rights reserved.</div>
+    </div>
+  </footer>
+</main>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;quoteAlign&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;center&quot;,&quot;left&quot;],&quot;default&quot;:&quot;center&quot;,&quot;tsType&quot;:&quot;'center' | 'left'&quot;,&quot;section&quot;:&quot;Quote box&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', idx: 0 };
+  slideRef = React.createRef();
+  cases = [
+    { title: "Local Contractor", metricHighlight: "238x ROAS", metricContext: "FROM $252 AD SPEND TO $60K", description: "Turned $252 in ad spend into a $60,000 closed project. After past unsuccessful campaigns that led to zero leads, we created a stronger homeowner offer, refined audience targeting, and built a system to attract high-quality leads consistently.", image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-dark-olive text-white" },
+    { title: "Psychologist", metricHighlight: "897 LEADS", metricContext: "COST PER LEAD $1.40", description: "Previously relying entirely on organic traffic and referrals, we built their first paid system. We generated a steady, predictable stream of qualified leads at just $1.40 per lead with a 4.2x ROAS.", image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-olive text-brand-navy" },
+    { title: "Jewelry Store", metricHighlight: "5.17x ROAS", metricContext: "IN THE FIRST 2 MONTHS", description: "The brand had a loyal organic audience generating consistent sales. We analyzed buying behavior, launched fresh creatives and ad copy, and scaled warm traffic first—hitting an 11x ROAS on the first campaign.", image: "https://images.unsplash.com/photo-1585960622850-ed33c41d6418?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-pink text-white" },
+    { title: "Clothing Store", metricHighlight: "3.9x ROAS", metricContext: "211 SALES ($26,432 REVENUE)", description: "With the primary goal of increasing sales and brand awareness, the clothing store generated 211 sales and $26,432 in total revenue, proving the scalability of their e-commerce funnel.", image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-purple text-white" },
+    { title: "Photographer", metricHighlight: "15 BOOKINGS", metricContext: "IN 3 WEEKS ($10.32/BOOKING)", description: "The Vancouver-based photographer ran their ads through the Instagram app and wasn't getting the results they wanted. We switched to Instagram DM ads and booked 15 mini-sessions at $300 each within three weeks, achieving a low $10.32 cost per booking.", image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-light-purple text-brand-purple" },
+    { title: "Confidence Coach", metricHighlight: "3.5x - 6x ROAS", metricContext: "MONTHLY BACKEND RETURN", description: "They had a proven organic funnel but no cold traffic offer. We split-tested three low-ticket offers to find the winner. This front-end offer drove a 2x ROAS on its own, seamlessly converting cold traffic into their $1,500 main program for a massive final return of 6x.", image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1200&auto=format&fit=crop", color: "bg-brand-navy text-white" }
+  ];
+  testimonials = [
+    { text: "Sasha's team has been managing our ads for quite a long time and we are extremely happy with the results. They care about every $ spent on paid ads. The ROAS we get is far better than what we had before. Highly recommend!", name: "Steph", img: "https://randomuser.me/api/portraits/women/44.jpg" },
+    { text: "I've tried running Meta ads in the past by myself and I wasn't getting the return I need. Sasha came in with a completely new strategy, suggested a few offers just for the ads, her team created fabulous ad creatives and we were able to scale to $3000 with 3.6 ROAS!", name: "Rebekah", img: "https://randomuser.me/api/portraits/women/65.jpg" },
+    { text: "Sasha's ad strategies got me 400 new leads within a month (for only $1.02/lead.)", name: "Dustin M.", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { text: "You could tell Sasha knew her stuff! I know I'll be coming back to her again because she's that GOOD!", name: "Dahlia", img: "https://randomuser.me/api/portraits/women/68.jpg" },
+    { text: "I am happy to say that we’re seeing the highest values in 3 years!", name: "Laura", img: "https://randomuser.me/api/portraits/women/12.jpg" },
+    { text: "Sasha is the best! She made it so simple and I feel like I have such a good plan in place!!", name: "Nikki P.", img: "https://randomuser.me/api/portraits/women/32.jpg" }
+  ];
+  componentDidMount() {
+    this._tick = setInterval(() => {
+      if (this.state.page !== 'home' || this.paused || this.animating || document.hidden) return;
+      const p = (this.state.prog || 0) + 100 / 7000;
+      if (p >= 1) this.changeTo((this.state.idx + 1) % this.cases.length);
+      else this.setState({ prog: p });
+    }, 100);
+    this._h = () => this.readHash();
+    window.addEventListener('hashchange', this._h);
+    this.readHash();
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._h); clearInterval(this._tick); }
+  readHash() {}
+  go(p) {
+    const map = { home: 'index.dc.html', consultation: 'meta-ads-consultation.dc.html', 'management-no-graphics': 'meta-ads-management.dc.html', 'management-with-graphics': 'full-service-meta-ads.dc.html' };
+    location.href = map[p] || 'index.dc.html';
+  }
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  }
+  changeTo(i) {
+    if (this.animating || i === this.state.idx) return;
+    this.animating = true;
+    const el = this.slideRef.current;
+    const enter = () => {
+      this.setState({ idx: i, prog: 0 }, () => {
+        const e = this.slideRef.current;
+        if (this.exitAnim) { this.exitAnim.cancel(); this.exitAnim = null; }
+        if (e && e.animate) {
+          const a = e.animate([{ opacity: 0, transform: 'translateX(50px) scale(0.98)' }, { opacity: 1, transform: 'translateX(0) scale(1)' }], { duration: 400, easing: 'ease-out' });
+          a.onfinish = () => { this.animating = false; };
+        } else this.animating = false;
+      });
+    };
+    if (el && el.animate) {
+      this.exitAnim = el.animate([{ opacity: 1, transform: 'translateX(0) scale(1)' }, { opacity: 0, transform: 'translateX(-50px) scale(0.98)' }], { duration: 400, easing: 'ease-out', fill: 'forwards' });
+      this.exitAnim.onfinish = enter;
+    } else enter();
+  }
+  renderVals() {
+    const qa = this.props.quoteAlign ?? 'center';
+    const quoteAlignClass = qa === 'left' ? 'text-left' : 'text-center';
+    const quoteJustifyClass = qa === 'left' ? 'justify-start' : 'justify-center';
+    const n = this.cases.length;
+    const idx = this.state.idx;
+    const c = this.cases[idx];
+    const next = () => this.changeTo((this.state.idx + 1) % n);
+    const prev = () => this.changeTo((this.state.idx - 1 + n) % n);
+    return { quoteAlignClass, quoteJustifyClass,
+      isHome: this.state.page === 'home',
+      isConsultation: this.state.page === 'consultation',
+      isNoGraphics: this.state.page === 'management-no-graphics',
+      isWithGraphics: this.state.page === 'management-with-graphics',
+      year: new Date().getFullYear(),
+      toAbout: () => this.scrollTo('about'),
+      toCases: () => this.scrollTo('case-studies'),
+      toMethod: () => this.scrollTo('method'),
+      toServices: () => this.scrollTo('services'),
+      goHome: () => this.go('home'),
+      goConsultation: () => this.go('consultation'),
+      goNoGraphics: () => this.go('management-no-graphics'),
+      goWithGraphics: () => this.go('management-with-graphics'),
+      slideRef: this.slideRef,
+      cs: { ...c, num: String(idx + 1).padStart(2, '0'), alt: c.title + ' Meta ads case study' },
+      caseTotal: String(n).padStart(2, '0'),
+      pauseCases: () => { this.paused = true; },
+      resumeCases: () => { this.paused = false; },
+      tabs: this.cases.map((cc, i) => ({
+        go: () => this.changeTo(i),
+        num: String(i + 1).padStart(2, '0'),
+        title: cc.title,
+        label: 'Show case study: ' + cc.title,
+        w: i < idx ? '100%' : i === idx ? Math.round((this.state.prog || 0) * 1000) / 10 + '%' : '0%',
+        cls: i === idx ? 'text-brand-navy' : 'text-brand-navy/45 hover:text-brand-navy'
+      })),
+      next, prev,
+      onPointerDown: (e) => { this._sx = e.clientX; this._st = Date.now(); },
+      onPointerUp: (e) => {
+        if (this._sx == null) return;
+        const dx = e.clientX - this._sx;
+        const v = Math.abs(dx) / Math.max(1, Date.now() - this._st) * 1000;
+        this._sx = null;
+        if (Math.abs(dx) * v > 10000 || Math.abs(dx) > 80) { dx < 0 ? next() : prev(); }
+      },
+      dots: this.cases.map((_, i) => ({
+        go: () => this.changeTo(i),
+        cls: i === idx ? 'w-10 h-3 bg-brand-pink' : 'w-3 h-3 bg-brand-navy/20 hover:bg-brand-navy/40',
+        label: 'Go to slide ' + (i + 1)
+      })),
+      testimonials: this.testimonials.map(t => ({ ...t, alt: t.name + ', Grow with Sasha client' })),
+      consultWho: ["Business owners running their own ads", "Brands launching Meta ads for the first time", "Advertisers looking to improve performance", "Teams that need help with strategy, creative angles, or targeting", "Anyone who wants expert feedback before making expensive mistakes"],
+      consultCover: ["Campaign structure and setup", "Targeting and audience strategy", "Creative concepts and ad angles", "Ad copy and messaging", "Landing pages and conversion flow", "Troubleshooting campaigns"],
+      mgmtWho: ["E-commerce brands", "Coaches & consultants", "Service-based businesses", "Local businesses & contractors", "Health, wellness & beauty clinics", "Real estate professionals"],
+      noGfxIncluded: ["Account audit", "Meta Pixel & CAPI setup", "Campaign strategy & creation", "Audience targeting", "Daily monitoring & scaling", "Creative strategy feedback", "Monthly performance reports", "Monthly 1:1 strategy calls", "Private Slack support"],
+      gfxIncluded: ["Complete account audit", "Meta Pixel & CAPI setup", "Campaign strategy & creation", "Audience targeting", "Creative strategy & planning", "Static design & video editing", "Creative testing & iteration", "Daily optimization & scaling", "Monthly performance reports", "Monthly 1:1 strategy calls", "Private Slack support"]
+    };
+  }
+}
+</script>
+</body>
+</html>
