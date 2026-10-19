@@ -71,7 +71,7 @@
   html { scroll-behavior: smooth; }
   p, li { text-wrap: pretty; }
   :focus-visible { outline: 2px solid #F26F8F; outline-offset: 3px; border-radius: 9999px; }
-  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .035; background-image: url("https://grainy-gradients.vercel.app/noise.svg"); }
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .035; background-image: url("/assets/noise.svg"); }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-semibold;
     letter-spacing: -0.015em; text-wrap: balance;
@@ -89,7 +89,7 @@
 <sc-if value="{{ isNoGraphics }}" hint-placeholder-val="{{ false }}">
 <div class="min-h-screen bg-brand-cream relative overflow-hidden font-body text-brand-navy flex flex-col justify-between" data-screen-label="Management No Graphics">
   <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div class="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
+    <div class="absolute inset-0 opacity-[0.03] bg-[url('/assets/noise.svg')] mix-blend-overlay"></div>
     <div class="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-brand-purple/35 rounded-full blur-[120px] mix-blend-multiply animate-pulse" style="animation-duration: 9s"></div>
     <div class="absolute top-[40%] -left-[20%] w-[600px] h-[600px] bg-brand-pink/35 rounded-full blur-[100px] mix-blend-multiply"></div>
   </div>
